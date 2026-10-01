@@ -1,0 +1,349 @@
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080707;--cream:#f5eee4;--muted:#aaa198;--accent:#dca38f;--ink:#181311;--body:"Special Elite",monospace;--display:"Lobster",cursive}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--cream)}
+body{font-family:var(--body);cursor:default}
+button{font:inherit}
+.grain{position:fixed;inset:-50%;z-index:1000;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");animation:grain .2s steps(2) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(2%,-1%)}50%{transform:translate(-1%,2%)}75%{transform:translate(1%,1%)}100%{transform:translate(-2%,-1%)}}
+.vignette{position:fixed;inset:0;z-index:999;pointer-events:none;background:radial-gradient(circle,transparent 28%,rgba(0,0,0,.55) 100%)}
+.cinema-flare{position:fixed;z-index:997;pointer-events:none;width:35vw;height:170vh;top:-35vh;left:-55vw;transform:rotate(18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.025),rgba(220,163,143,.12),rgba(255,255,255,.025),transparent);filter:blur(10px);animation:sweep 12s ease-in-out infinite}
+@keyframes sweep{0%,60%{left:-55vw;opacity:0}72%{opacity:1}90%,100%{left:125vw;opacity:0}}
+.film-dust{position:fixed;inset:0;z-index:996;pointer-events:none}.dust{position:absolute;width:2px;height:2px;background:#fff;opacity:.2;border-radius:50%;animation:dust 6s linear infinite}@keyframes dust{from{transform:translateY(110vh)}to{transform:translateY(-10vh)}}
+.top-ui{position:fixed;z-index:1200;top:16px;left:18px;right:18px;display:flex;justify-content:space-between;align-items:center;pointer-events:none}.page-count{font-size:.65rem;letter-spacing:.18em;color:#a99f96;background:rgba(0,0,0,.48);padding:7px 10px;border:1px solid rgba(255,255,255,.14);border-radius:20px;backdrop-filter:blur(8px)}.music-toggle{pointer-events:auto;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.48);color:#fff;display:none;cursor:pointer}.music-toggle.on{display:block;animation:musicPulse 2s ease-in-out infinite}@keyframes musicPulse{50%{box-shadow:0 0 0 7px rgba(220,163,143,.04)}}
+#book{width:100%;height:100%;position:relative}.page{position:absolute;inset:0;width:100%;height:100%;display:none;overflow:hidden;background:var(--bg)}.page.active{display:block;animation:pageIn .85s cubic-bezier(.22,1,.36,1) both}.page.exit{display:block;animation:pageOut .45s ease both;pointer-events:none}@keyframes pageIn{from{opacity:0;transform:scale(1.025);filter:blur(7px)}to{opacity:1;transform:none;filter:none}}@keyframes pageOut{to{opacity:0;transform:scale(.97);filter:blur(6px)}}
+.page-inner{width:100%;height:100%;padding:8vh 10vw;position:relative}.safe-content{padding-left:12vw;padding-right:12vw}.center{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.eyebrow,.chapter{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:#aaa099}.small-copy{font-size:.78rem;line-height:1.9;color:#aaa19a}.hero-title{font-family:var(--display);font-weight:400;font-size:clamp(4.5rem,14vw,10rem);line-height:.78;margin:25px 0;text-shadow:0 10px 45px rgba(0,0,0,.6)}.hero-title span{color:var(--accent)}.subline{font-size:1.2rem;color:#ddd2c8}.audio-hint{font-size:.58rem;letter-spacing:.12em;color:#777;margin-top:18px}
+.title-page{background:radial-gradient(circle at 50% 45%,#28201d,#090807 65%)}.display-title{font-family:var(--display);font-weight:400;font-size:clamp(4rem,13vw,9rem);line-height:.78;margin:25px 0;color:#f2e9de}.display-title span{color:var(--accent)}.name-card{display:flex;flex-direction:column;gap:6px;border:1px solid rgba(255,255,255,.2);padding:14px 24px;background:rgba(255,255,255,.035);transform:rotate(-2deg);box-shadow:0 20px 60px rgba(0,0,0,.35)}.name-card span{font-family:var(--display);font-size:1.5rem;letter-spacing:.08em}
+/* Navigation is always in empty side rails, never over the story content. */
+.page-nav{position:absolute;z-index:110;inset:0;pointer-events:none}.nav-btn{position:absolute;top:50%;transform:translateY(-50%);min-width:116px;padding:13px 14px;border:1px solid rgba(255,255,255,.55);border-radius:999px;background:rgba(12,10,9,.72);color:#fff;box-shadow:0 0 0 1px rgba(220,163,143,.18),0 8px 28px rgba(0,0,0,.35),0 0 20px rgba(220,163,143,.14);backdrop-filter:blur(12px);font-size:.58rem;letter-spacing:.11em;cursor:pointer;pointer-events:auto;transition:.3s;white-space:nowrap}.nav-btn.prev{left:1.4vw}.nav-btn.next{right:1.4vw}.nav-btn:hover:not(:disabled){background:#f6eee5;color:#15100e;box-shadow:0 0 0 1px rgba(255,255,255,.55),0 10px 35px rgba(0,0,0,.45),0 0 28px rgba(220,163,143,.4);transform:translateY(-50%) scale(1.04)}.nav-btn:disabled{opacity:.42;cursor:default}.nav-btn::after{content:"";position:absolute;inset:1px;border-radius:inherit;border:1px solid rgba(255,255,255,.08);animation:navPulse 2.2s ease-in-out infinite}@keyframes navPulse{50%{box-shadow:0 0 18px rgba(220,163,143,.18)}}
+.photo-page{background:#080808}.photo-bg{position:absolute;inset:-4%;background-image:var(--bg);background-size:cover;background-position:center;filter:blur(30px) brightness(.33);transform:scale(1.08)}.photo-main{position:absolute;inset:7vh 9vw 9vh;display:grid;place-items:center;z-index:2}.photo-main img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 18px 35px rgba(0,0,0,.48))}.photo-shade{position:absolute;inset:0;z-index:3;background:linear-gradient(90deg,rgba(0,0,0,.55),transparent 42%,rgba(0,0,0,.38)),linear-gradient(0deg,rgba(0,0,0,.55),transparent 55%)}.photo-copy{position:absolute;z-index:8;max-width:min(560px,35vw);bottom:14vh}.photo-copy.left{left:11vw}.photo-copy.right{right:11vw;text-align:right}.photo-copy.bottom{left:11vw;bottom:11vh}.photo-copy h2{font-family:var(--display);font-weight:400;font-size:clamp(2.3rem,5vw,5.4rem);line-height:.9;margin-top:15px;text-shadow:0 10px 30px #000}.photo-copy p{font-size:.82rem;color:#c4bbb2;line-height:1.7;margin-top:15px}
+.quote-page{background:radial-gradient(circle at 50% 50%,#332521,#090706 65%)}.film-number{font-size:7rem;opacity:.06;position:absolute;top:5vh;font-family:var(--display)}.big-quote{font-family:var(--display);font-size:clamp(2.5rem,7vw,6.5rem);line-height:.95;margin:10px;max-width:1000px}.big-quote.accent{color:#d9cec5}.big-quote span{color:var(--accent)}.tiny-dots{margin-top:20px;color:var(--accent);letter-spacing:.5em}
+.collage-page{background:#e9e0d6;color:#181311}.collage-page .chapter{color:#776b62}.collage-wrap{position:relative;height:55vh;width:min(760px,72vw);margin:25px auto}.collage-wrap img{position:absolute;object-fit:contain;background:#111;box-shadow:0 25px 60px rgba(0,0,0,.3);border:7px solid #f5eee4}.collage-a{width:53%;height:68%;left:0;top:0;transform:rotate(-4deg);animation:floatA 5s ease-in-out infinite}.collage-b{width:53%;height:68%;right:0;bottom:0;transform:rotate(4deg);animation:floatB 6s ease-in-out infinite}@keyframes floatA{50%{transform:rotate(-1deg) translateY(-12px)}}@keyframes floatB{50%{transform:rotate(1deg) translateY(12px)}}.collage-copy{text-align:center}.collage-copy h2{font-family:var(--display);font-weight:400;font-size:clamp(2rem,5vw,4.5rem);line-height:.95}.collage-copy span{color:#9c5c4e}
+.horizontal-page{background:#070707}.horizontal-photo{position:absolute;inset:8vh 9vw 13vh;display:grid;place-items:center;z-index:2}.horizontal-photo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 18px 35px rgba(0,0,0,.5))}.horizontal-shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.78),transparent 55%,rgba(0,0,0,.2));z-index:3}.horizontal-copy{position:absolute;left:11vw;bottom:12vh;z-index:8;max-width:520px}.horizontal-copy h2{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,5vw,5rem);line-height:.92;margin-top:14px}.horizontal-copy p{font-size:.8rem;color:#bbb;line-height:1.7;margin-top:12px}
+.announcement-page{background:#11100e}.announcement{font-family:var(--display);font-weight:400;font-size:clamp(3.5rem,10vw,8rem);line-height:.8;margin:28px 0}.announcement span{color:var(--accent)}.last-photo-page{background:#060606}.last-photo-bg{position:absolute;inset:-4%;background:url('images/photo9-horizontal.jpg') center/cover;filter:blur(25px) brightness(.35);transform:scale(1.08)}.last-photo{position:absolute;inset:8vh 9vw 20vh;z-index:2;display:grid;place-items:center}.last-photo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 18px 35px rgba(0,0,0,.5))}.last-photo-copy{position:absolute;z-index:8;left:11vw;bottom:9vh;max-width:560px}.last-photo-copy h2{font-family:var(--display);font-weight:400;font-size:clamp(2.3rem,5.5vw,5.3rem);line-height:.9;margin-top:12px}.last-photo-copy p{font-size:.8rem;color:#ccc;margin-top:12px}
+.final-page{background:radial-gradient(circle at 50% 45%,#33221f,#080707 68%)}.final-glow{position:absolute;width:50vw;height:50vw;border-radius:50%;background:rgba(210,130,110,.09);filter:blur(70px);animation:glow 4s ease-in-out infinite alternate}@keyframes glow{from{transform:scale(.8);opacity:.4}to{transform:scale(1.2);opacity:1}}.countdown{font-family:var(--display);font-size:clamp(9rem,28vw,18rem);line-height:.8;color:var(--accent);margin:35px 0}.final-message{max-width:760px;animation:finalReveal 1.2s both}.final-message h1{font-family:var(--display);font-weight:400;font-size:clamp(4rem,11vw,8rem);line-height:.78}.final-message h1 span{color:var(--accent);font-style:italic}.signature{font-size:1.4rem;margin-top:18px;color:#bbb}.final-line{width:80px;height:1px;background:var(--accent);margin:25px auto}.user-message{font-size:clamp(.95rem,2vw,1.25rem);line-height:1.8;color:#e5ddd4}.user-message p{margin:16px 0}.last-note{margin-top:22px;color:var(--accent)}.final-spark{font-size:2rem;color:var(--accent);animation:spark 1.5s ease-in-out infinite alternate}@keyframes spark{to{transform:scale(1.4) rotate(10deg);text-shadow:0 0 30px var(--accent)}}@keyframes finalReveal{from{opacity:0;transform:scale(.85);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+/* Doraemon now belongs to the scene: it animates around/over the writing or image instead of floating across the whole screen. */
+.page-doraemon{position:absolute;z-index:9;pointer-events:none;filter:drop-shadow(0 10px 16px rgba(0,0,0,.35));animation:doraFloat 4.8s ease-in-out infinite}.page-doraemon img{width:100%;height:100%;object-fit:contain}.d-left-mid{width:82px;left:23vw;top:43%;animation-delay:.2s}.d-right-top{width:72px;right:22vw;top:25%;animation-delay:.8s}.d-title-left{width:78px;left:20vw;top:31%}.d-title-right{width:82px;right:20vw;bottom:28%;animation-delay:1s}.quote-doraemon{width:90px;right:19vw;top:24%}.collage-doraemon{width:78px;right:18vw;top:18%}.photo-doraemon-1{width:78px;right:16vw;top:18%}.photo-doraemon-2{width:72px;left:19vw;bottom:19%;animation-delay:1s}.photo-doraemon-3{width:75px;left:18vw;top:20%}.photo-doraemon-4{width:80px;right:18vw;bottom:17%}.photo-doraemon-5{width:72px;left:18vw;top:18%}.photo-doraemon-6{width:76px;right:18vw;top:20%}.photo-doraemon-7{width:70px;right:19vw;top:17%}.horizontal-doraemon{width:82px;right:17vw;top:15%}.announce-doraemon{width:90px;left:22vw;bottom:18%}.photo-doraemon-8{width:76px;left:19vw;bottom:19%}.last-doraemon{width:82px;right:18vw;top:16%}.final-doraemon{width:80px;left:17vw;top:19%}@keyframes doraFloat{0%,100%{transform:translate3d(0,0,0) rotate(-3deg)}50%{transform:translate3d(10px,-14px,0) rotate(4deg)}}
+.reveal{opacity:0;transform:translateY(28px)}.page.active .reveal{animation:reveal .8s cubic-bezier(.22,1,.36,1) forwards}.r1{animation-delay:.15s!important}.r2{animation-delay:.3s!important}.r3{animation-delay:.48s!important}.r4{animation-delay:.66s!important}.r5{animation-delay:.84s!important}@keyframes reveal{to{opacity:1;transform:none}}
+#confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:20}.confetti-piece{position:absolute;top:-20px;width:7px;height:14px;animation:fall 4s linear forwards}@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(720deg);opacity:0}}
+.hidden{display:none!important}
+@media(max-width:700px){
+  .top-ui{top:10px;left:10px;right:10px}.safe-content{padding-left:18vw;padding-right:18vw}.page-inner{padding:8vh 16vw}.nav-btn{top:auto;bottom:2.2vh;min-width:132px;padding:12px 12px;font-size:.55rem}.nav-btn.prev{left:3vw;transform:none}.nav-btn.next{right:3vw;transform:none}.nav-btn:hover:not(:disabled){transform:scale(1.03)}
+  .photo-main{inset:8vh 16vw 17vh}.photo-copy{max-width:62vw;bottom:15vh}.photo-copy.left{left:18vw}.photo-copy.right{right:18vw}.photo-copy.bottom{left:18vw;bottom:15vh}.photo-copy h2{font-size:2.25rem}.horizontal-photo{inset:11vh 14vw 22vh}.horizontal-copy{left:18vw;bottom:14vh;max-width:62vw}.last-photo{inset:11vh 14vw 21vh}.last-photo-copy{left:18vw;bottom:12vh;max-width:62vw}.last-photo-copy h2{font-size:2.25rem}.collage-wrap{height:48vh;width:68vw}.collage-copy h2{font-size:2.1rem}.d-left-mid{left:23vw;width:58px}.d-right-top{right:23vw;width:54px}.d-title-left{left:21vw;width:55px}.d-title-right{right:21vw;width:58px}.quote-doraemon{right:20vw;width:62px}.collage-doraemon{right:20vw;width:56px}.page-doraemon{opacity:.9}.photo-doraemon-1,.photo-doraemon-2,.photo-doraemon-3,.photo-doraemon-4,.photo-doraemon-5,.photo-doraemon-6,.photo-doraemon-7,.photo-doraemon-8{width:54px}.horizontal-doraemon,.last-doraemon,.final-doraemon,.announce-doraemon{width:58px}.announcement{font-size:3.25rem}.final-message{max-width:64vw}.final-message h1{font-size:3.7rem}.user-message{font-size:.88rem;line-height:1.6}
+}
+
+/* ===== FINAL IMAGE-FIT + NAV + DORAEMON POLISH ===== */
+/* Never crop the actual photos: every primary image is shown in full. */
+.photo-main,
+.horizontal-photo,
+.last-photo{
+  display:grid;
+  place-items:center;
+  overflow:visible;
+}
+.photo-main{
+  inset:8vh 21vw 11vh;
+  z-index:4;
+}
+.photo-main img,
+.horizontal-photo img,
+.last-photo img,
+.collage-wrap img{
+  object-fit:contain !important;
+  object-position:center center !important;
+  width:auto !important;
+  height:auto !important;
+}
+.photo-main img{
+  max-width:58vw !important;
+  max-height:73vh !important;
+}
+.horizontal-photo{
+  inset:9vh 18vw 15vh;
+  z-index:4;
+}
+.horizontal-photo img{
+  max-width:64vw !important;
+  max-height:70vh !important;
+}
+.last-photo{
+  inset:9vh 18vw 17vh;
+  z-index:4;
+}
+.last-photo img{
+  max-width:64vw !important;
+  max-height:68vh !important;
+}
+
+/* Text gets its own side rail, so it never sits on top of the photo. */
+.photo-copy,
+.horizontal-copy,
+.last-photo-copy{
+  z-index:12;
+  max-width:19vw !important;
+  width:19vw;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+.photo-copy.left{left:2.5vw !important;text-align:left !important;bottom:50%;transform:translateY(50%)}
+.photo-copy.right{right:2.5vw !important;text-align:right !important;bottom:50%;transform:translateY(50%)}
+.photo-copy.bottom{left:2.5vw !important;bottom:15vh;max-width:23vw !important;width:23vw}
+.horizontal-copy{left:2.5vw !important;bottom:50%;transform:translateY(50%);max-width:18vw !important;width:18vw}
+.last-photo-copy{right:2.5vw !important;left:auto !important;bottom:50%;transform:translateY(50%);max-width:18vw !important;width:18vw}
+.photo-copy h2,
+.horizontal-copy h2,
+.last-photo-copy h2{
+  font-size:clamp(1.8rem,3.1vw,3.7rem) !important;
+  line-height:.94 !important;
+}
+.photo-copy p,.horizontal-copy p,.last-photo-copy p{font-size:.72rem;line-height:1.55}
+
+/* Keep the navigation in dedicated empty side rails and make both controls obvious. */
+.page-nav{z-index:150}
+.nav-btn{
+  min-width:145px !important;
+  padding:14px 16px !important;
+  border:1.5px solid rgba(255,255,255,.78) !important;
+  background:rgba(8,7,7,.86) !important;
+  color:#fff !important;
+  box-shadow:0 0 0 2px rgba(220,163,143,.16),0 10px 32px rgba(0,0,0,.5),0 0 26px rgba(220,163,143,.2) !important;
+  font-weight:600;
+}
+.nav-btn.next{right:1.2vw}
+.nav-btn.prev{left:1.2vw}
+.nav-btn:hover:not(:disabled){background:#f5eee4 !important;color:#17110e !important}
+.nav-btn:disabled{opacity:.38 !important;border-color:rgba(255,255,255,.4) !important}
+
+/* Decorative DORAEMON word appears between the visual content in the side/margin areas. */
+.dora-word{
+  position:absolute;
+  z-index:7;
+  pointer-events:none;
+  font-family:var(--body);
+  font-size:.52rem;
+  letter-spacing:.48em;
+  color:rgba(245,238,228,.5);
+  text-shadow:0 0 14px rgba(220,163,143,.18);
+  transform:rotate(-90deg);
+  white-space:nowrap;
+  animation:doraWordPulse 3.8s ease-in-out infinite;
+}
+.dw-a{left:8.2vw;top:25%}.dw-b{right:7.8vw;top:33%;transform:rotate(90deg)}
+.dw-c{left:8vw;bottom:28%}.dw-d{right:8vw;bottom:25%;transform:rotate(90deg)}
+.dw-e{left:8vw;top:57%}.dw-f{right:7.5vw;top:58%;transform:rotate(90deg)}
+.dw-g{left:8vw;top:38%}.dw-h{right:7.5vw;top:43%;transform:rotate(90deg)}
+@keyframes doraWordPulse{50%{opacity:.38;letter-spacing:.58em}}
+
+/* Final message: give the personal note a clean dedicated reading area. */
+.final-inner{padding-left:17vw !important;padding-right:17vw !important}
+.final-message{max-width:820px !important;width:min(820px,72vw);padding:12px 20px 20px}
+.user-message{max-width:760px;margin:auto}
+
+@media(max-width:700px){
+  .photo-main{inset:8vh 23vw 17vh}
+  .photo-main img{max-width:52vw !important;max-height:64vh !important}
+  .horizontal-photo{inset:10vh 17vw 24vh}
+  .horizontal-photo img{max-width:66vw !important;max-height:58vh !important}
+  .last-photo{inset:10vh 17vw 23vh}
+  .last-photo img{max-width:66vw !important;max-height:58vh !important}
+  .photo-copy,.horizontal-copy,.last-photo-copy{max-width:18vw !important;width:18vw !important}
+  .photo-copy.left{left:2vw !important}.photo-copy.right{right:2vw !important}.photo-copy.bottom{left:2vw !important}
+  .horizontal-copy{left:2vw !important}.last-photo-copy{right:2vw !important}
+  .photo-copy h2,.horizontal-copy h2,.last-photo-copy h2{font-size:1.35rem !important}
+  .photo-copy p,.horizontal-copy p,.last-photo-copy p{font-size:.55rem;line-height:1.4}
+  .nav-btn{min-width:120px !important;padding:11px 10px !important;font-size:.5rem !important}
+  .nav-btn.prev{left:1.5vw}.nav-btn.next{right:1.5vw}
+  .dora-word{font-size:.4rem;letter-spacing:.32em}
+  .dw-a,.dw-c,.dw-e,.dw-g{left:10vw}.dw-b,.dw-d,.dw-f,.dw-h{right:10vw}
+  .final-inner{padding-left:14vw !important;padding-right:14vw !important}
+  .final-message{width:72vw;padding:8px}
+  .user-message{font-size:.76rem !important}
+}
+.final-user-message{font-family:var(--body);font-size:clamp(1rem,2vw,1.35rem);line-height:1.9;color:#eee6dd;text-align:center}.birthday-line{font-family:var(--display);font-size:clamp(2.4rem,5vw,5rem);line-height:1.05;color:var(--cream);margin-bottom:12px}.final-user-message .final-line{margin:22px auto;width:100px}.final-user-message p:not(.birthday-line){max-width:760px;margin:18px auto}
+
+/* ===== MOBILE-FIRST FINAL IMAGE VISIBILITY FIX ===== */
+/* Every original photo is contained inside a real frame. Nothing is cropped. */
+.photo-main,
+.horizontal-photo,
+.last-photo {
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+  background:rgba(0,0,0,.12);
+}
+.photo-main img,
+.horizontal-photo img,
+.last-photo img {
+  display:block !important;
+  width:auto !important;
+  height:auto !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  flex:0 0 auto !important;
+}
+
+/* Desktop: reserve the middle for the complete photograph and the outer rails for controls/text. */
+.photo-main { inset:8vh 18vw 12vh !important; }
+.photo-main img { max-width:64vw !important; max-height:78vh !important; }
+.horizontal-photo { inset:10vh 17vw 16vh !important; }
+.horizontal-photo img { max-width:66vw !important; max-height:72vh !important; }
+.last-photo { inset:10vh 17vw 18vh !important; }
+.last-photo img { max-width:66vw !important; max-height:68vh !important; }
+
+/* The two-photo memory page was the main source of overlap. Give each photo its own card. */
+.collage-page .page-inner {
+  padding:6vh 14vw 10vh !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+}
+.collage-wrap {
+  width:min(760px,68vw) !important;
+  height:58vh !important;
+  margin:1.5vh auto 1vh !important;
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+  gap:2vw !important;
+  position:relative !important;
+}
+.collage-wrap img {
+  position:relative !important;
+  inset:auto !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  background:#111 !important;
+  padding:5px !important;
+  border:7px solid #f5eee4 !important;
+  box-shadow:0 20px 45px rgba(0,0,0,.28) !important;
+  transform:none !important;
+  animation:none !important;
+}
+.collage-copy { margin-top:1vh !important; }
+.collage-copy h2 { font-size:clamp(1.8rem,3.7vw,3.5rem) !important; }
+
+/* Mobile is the primary target: image first, controls at the bottom, text in its own strip. */
+@media (max-width:700px) {
+  .top-ui { top:8px; left:10px; right:10px; }
+  .page-count { font-size:.55rem; padding:6px 8px; }
+
+  .photo-main {
+    inset:17vh 5vw 18vh !important;
+  }
+  .photo-main img {
+    max-width:90vw !important;
+    max-height:62vh !important;
+  }
+
+  .horizontal-photo {
+    inset:17vh 4vw 21vh !important;
+  }
+  .horizontal-photo img {
+    max-width:92vw !important;
+    max-height:54vh !important;
+  }
+
+  .last-photo {
+    inset:16vh 4vw 21vh !important;
+  }
+  .last-photo img {
+    max-width:92vw !important;
+    max-height:54vh !important;
+  }
+
+  /* Text never sits on the image on phones. */
+  .photo-copy,
+  .horizontal-copy,
+  .last-photo-copy {
+    left:5vw !important;
+    right:5vw !important;
+    top:5.5vh !important;
+    bottom:auto !important;
+    width:90vw !important;
+    max-width:90vw !important;
+    transform:none !important;
+    text-align:center !important;
+    z-index:20 !important;
+    padding:0 3vw !important;
+  }
+  .photo-copy h2,
+  .horizontal-copy h2,
+  .last-photo-copy h2 {
+    font-size:clamp(1.35rem,6vw,2rem) !important;
+    line-height:.98 !important;
+    margin-top:6px !important;
+  }
+  .photo-copy p,
+  .horizontal-copy p,
+  .last-photo-copy p {
+    font-size:.62rem !important;
+    line-height:1.35 !important;
+    margin-top:5px !important;
+  }
+  .chapter { font-size:.48rem !important; letter-spacing:.18em !important; }
+
+  /* Phone navigation: the side rails disappear; controls get a dedicated bottom rail. */
+  .page-nav {
+    position:absolute !important;
+    left:0 !important;
+    right:0 !important;
+    top:auto !important;
+    bottom:2.2vh !important;
+    height:48px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    padding:0 4vw !important;
+    z-index:200 !important;
+  }
+  .nav-btn,
+  .nav-btn.prev,
+  .nav-btn.next {
+    position:relative !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    transform:none !important;
+    min-width:0 !important;
+    width:43vw !important;
+    max-width:180px !important;
+    height:42px !important;
+    padding:10px 8px !important;
+    font-size:.5rem !important;
+    letter-spacing:.08em !important;
+  }
+  .nav-btn:hover:not(:disabled) { transform:scale(1.02) !important; }
+
+  /* Mobile collage: two independent photo cards, both fully visible. */
+  .collage-page .page-inner {
+    padding:5vh 5vw 11vh !important;
+  }
+  .collage-wrap {
+    width:90vw !important;
+    height:58vh !important;
+    margin:1vh auto !important;
+    gap:2vw !important;
+    grid-template-columns:1fr 1fr !important;
+  }
+  .collage-wrap img {
+    min-width:0 !important;
+    min-height:0 !important;
+    padding:3px !important;
+    border-width:4px !important;
+  }
+  .collage-copy { margin-top:.5vh !important; }
+  .collage-copy h2 {
+    font-size:clamp(1.25rem,5.2vw,1.8rem) !important;
+    line-height:.95 !important;
+  }
+
+  /* Keep decorative Doraemon/wording in margins rather than over faces. */
+  .page-doraemon { z-index:25 !important; }
+  .dora-word { z-index:6 !important; opacity:.65; }
+}

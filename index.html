@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#080707">
+  <meta name="description" content="A cinematic birthday surprise for Sayera (PGL).">
+  <title>For Sayera — PGL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="grain"></div><div class="vignette"></div><div class="cinema-flare"></div><div class="film-dust" id="filmDust"></div>
+  <audio id="bgMusic" loop preload="auto" src="music/maiyya-mainu.mp3"></audio>
+  <div class="top-ui"><div class="page-count"><span id="pageNo">01</span> / <span id="pageTotal">15</span></div><button id="musicToggle" class="music-toggle" aria-label="Toggle music">♫</button></div>
+
+  <main id="book">
+    <!-- PAGE 1 -->
+    <section class="page active intro-page" data-page="1">
+      <div class="page-inner center safe-content">
+        <div class="eyebrow reveal r1">A little something for you</div>
+        <h1 class="hero-title reveal r2">Hey,<br><span>Sayera...</span></h1>
+        <p class="subline reveal r3">PGL, don't scroll.</p>
+        <p class="small-copy reveal r4">This isn't a normal birthday wish.<br>It's a tiny movie made just for you.</p>
+        <p id="audioHint" class="audio-hint">Turn your volume up.</p>
+        <div class="page-doraemon d-left-mid"><img src="images/doraemon/doraemon1.png" alt=""></div>
+        <div class="page-doraemon d-right-top"><img src="images/doraemon/doraemon2.png" alt=""></div>
+      </div>
+      <div class="dora-word dw-a">DORAEMON</div>
+      <div class="page-nav"><button class="nav-btn prev" disabled aria-label="Previous page">← <span>PREVIOUS</span></button><button class="nav-btn next" data-action="start"> <span>CLICK TO CONTINUE</span> →</button></div>
+    </section>
+
+    <!-- PAGE 2 -->
+    <section class="page title-page" data-page="2">
+      <div class="page-inner center safe-content">
+        <div class="chapter reveal r1">CHAPTER 01</div>
+        <h2 class="display-title reveal r2">HAPPY<br><span>BIRTHDAY</span></h2>
+        <div class="name-card reveal r3"><span>SAYERA</span></div>
+        <p class="small-copy reveal r4">The main character has entered the story.</p>
+        <div class="page-doraemon d-title-left"><img src="images/doraemon/doraemon3.png" alt=""></div>
+        <div class="page-doraemon d-title-right"><img src="images/doraemon/doraemon4.png" alt=""></div>
+      </div>
+      <div class="dora-word dw-b">DORAEMON</div>
+      <div class="page-nav"><button class="nav-btn prev">← <span>PREVIOUS</span></button><button class="nav-btn next"> <span>NEXT PAGE</span> →</button></div>
+    </section>
+
+    <!-- PAGE 3 -->
+    <section class="page photo-page" data-page="3">
+      <div class="photo-bg" style="--bg:url('images/photo1.jpeg')"></div><div class="photo-main"><img src="images/photo1.jpeg" alt="Sayera"></div><div class="photo-shade"></div>
+      <div class="photo-copy left reveal"><div class="chapter">CHAPTER 02 / FIRST FRAME</div><h2>Some people just make a picture feel complete.</h2></div>
+      <div class="page-doraemon photo-doraemon-1"><img src="images/doraemon/doraemon5.png" alt=""></div><div class="page-doraemon photo-doraemon-2"><img src="images/doraemon/doraemon6.png" alt=""></div>
+      <div class="dora-word dw-c">DORAEMON</div>
+      <div class="page-nav"><button class="nav-btn prev">← <span>PREVIOUS</span></button><button class="nav-btn next"><span>NEXT PAGE</span> →</button></div>
+    </section>
+
+    <!-- PAGE 4 -->
+    <section class="page quote-page" data-page="4">
+      <div class="page-inner center safe-content"><div class="film-number">04</div><p class="big-quote reveal r1">“And then somehow...</p><p class="big-quote accent reveal r2">a normal friendship became<br><span>our kind of friendship.</span>”</p><div class="tiny-dots reveal r3">• • •</div><div class="page-doraemon quote-doraemon"><img src="images/doraemon/doraemon7.png" alt=""></div></div>
+      <div class="dora-word dw-d">DORAEMON</div>
+      <div class="page-nav"><button class="nav-btn prev">← <span>PREVIOUS</span></button><button class="nav-btn next"><span>NEXT PAGE</span> →</button></div>
+    </section>
+
+    <!-- PAGE 5 -->
+    <section class="page photo-page" data-page="5">
+      <div class="photo-bg" style="--bg:url('images/photo2.jpeg')"></div><div class="photo-main"><img src="images/photo2.jpeg" alt="Sayera"></div><div class="photo-shade"></div>
+      <div class="photo-copy right reveal"><div class="chapter">CHAPTER 03 / PGL MODE</div><h2>Pretty. Calm. Innocent.</h2><p>And probably responsible for at least 40% of the chaos.</p></div>
+      <div class="page-doraemon photo-doraemon-3"><img src="images/doraemon/doraemon8.png" alt=""></div>
+      <div class="dora-word dw-e">DORAEMON</div>
+      <div class="page-nav"><button class="nav-btn prev">← <span>PREVIOUS</span></button><button class="nav-btn next"><span>NEXT PAGE</span> →</button></div>
+    </section>
+
+    <!-- PAGE 6 -->
+    <section class="page collage-page" data-page="6">
+      <div class="page-inner safe-content"><div class="chapter reveal r1">CHAPTER 04 / MEMORY FILE</div><div class="collage-wrap reveal r2"><img class="collage-a" src="images/photo3.jpeg" alt="Sayera memory"><img class="collage-b" src="images/photo4.jpeg" alt="Sayera memory"></div><div class="collage-copy reveal r3"><h2>Different days.<br>Different looks.<br><span>Same PGL energy.</span></h2></div><div class="page-doraemon collage-doraemon"><img src="images/doraemon/doraemon1.png" alt=""></div></div>
+      <div class="dora-word dw-f">DORAEMON</div>
+      <div class="page-nav"><button class="nav-btn prev">← <span>PREVIOUS</span></button><button class="nav-btn next"><span>NEXT PAGE</span> →</button></div>
+    </section>
+
+    <!-- PAGE 7: NEW PHOTO -->
+    <section class="page photo-page new-memory" data-page="7">
+      <div class="photo-bg" style="--bg:url('images/new-couple.jpeg')"></div><div class="photo-main"><img src="images/new-couple.jpeg" alt="Sayera and friend"></div><div class="photo-shade"></div>
+      <div class="photo-copy left reveal"><div class="chapter">CHAPTER 05 / TOGETHER</div><h2>Some frames say everything without a word.</h2></div>
+      <div class="page-doraemon photo-doraemon-4"><img src="images/doraemon/doraemon2.png" alt=""></div>
+      <div class="dora-word dw-g">DORAEMON</div>
+      <div class="page-nav"><button class="nav-btn prev">← <span>PREVIOUS</span></button><button class="nav-btn next"><span>NEXT PAGE</span> →</button></div>
+    </section>
+
+    <!-- PAGE 8: NEW PHOTO -->
+    <section class="page photo-page new-memory" data-page="8">
+      <div class="photo-bg" style="--bg:url('images/new-portrait.jpeg')"></div><div class="photo-main"><img src="images/new-portrait.jpeg" alt="Sayera memory"></div><div class="photo-shade"></div>
+      <div class="photo-copy right reveal"><div class="chapter">CHAPTER 06 / OLD SCHOOL</div><h2>A memory from a different chapter.</h2><p>Still unmistakably PGL.</p></div>
+      <div class="page-doraemon photo-doraemon-5"><img src="images/doraemon/doraemon4.png" alt=""></div>
+      <div class="dora-word dw-h">DORAEMON</div>
+      <div class="page-nav"><button class="nav-btn prev">← <span>PREVIOUS</span></button><button class="nav-btn next"><span>NEXT PAGE</span> →</button></div>
+    </section>
+
+    <!-- PAGE 9: NEW PHOTO -->
+    <section class="page photo-page new-memory" data-page="9">
+      <div class="photo-bg" style="--bg:url('images/new-child.jpeg')"></div><div class="photo-main"><img src="images/new-child.jpeg" alt="Sayera as a child"></div><div class="photo-shade"></div>
+      <div class="photo-copy left reveal"><div class="chapter">CHAPTER 07 / LITTLE PGL</div><h2>Before all the stories, there was this little girl.</h2><p>And look how far the story has come.</p></div>
+      <div class="page-doraemon photo-doraemon-6"><img src="images/doraemon/doraemon3.png" alt=""></div>
+      <div class="dora-word dw-a">DORAEMON</div>
+      <div class="page-nav"><button class="nav-btn prev">← <span>PREVIOUS</span></button><button class="nav-btn next"><span>NEXT PAGE</span> →</button></div>
+    </section>
+
+    <!-- PAGE 10 -->
+    <section class="page horizontal-page" data-page="10">
+      <div class="horizontal-photo"><img src="images/photo6.jpeg" alt="Sayera and friend"></div><div class="horizontal-shade"></div>
+      <div class="horizontal-copy reveal"><div class="chapter">CHAPTER 08 / STILL HERE</div><h2>Because the best memories aren't always planned.</h2><p>Sometimes an ordinary moment becomes special because of the person in it.</p></div>
+      <div class="page-doraemon horizontal-doraemon"><img src="images/doraemon/doraemon5.png" alt=""></div>
+      <div class="dora-word dw-b">DORAEMON</div>
+      <div class="page-nav"><button class="nav-btn prev">← <span>PREVIOUS</span></button><button class="nav-btn next"><span>NEXT PAGE</span> →</button></div>
+    </section>
+
+    <!-- PAGE 11 -->
+    <section class="page photo-page" data-page="11">
+      <div class="photo-bg" style="--bg:url('images/photo7.jpeg')"></div><div class="photo-main"><img src="images/photo7.jpeg" alt="Sayera and friend"></div><div class="photo-shade"></div>
+      <div class="photo-copy bottom reveal"><div class="chapter">CHAPTER 09 / US</div><h2>Photographic evidence of this friendship.</h2><p>Unfortunately, we're both in it. 😂</p></div>
+      <div class="page-doraemon photo-doraemon-7"><img src="images/doraemon/doraemon6.png" alt=""></div>
+      <div class="dora-word dw-c">DORAEMON</div>
+      <div class="page-nav"><button class="nav-btn prev">← <span>PREVIOUS</span></button><button class="nav-btn next"><span>NEXT PAGE</span> →</button></div>
+    </section>
+
+    <!-- PAGE 12 -->
+    <section class="page announcement-page" data-page="12">
+      <div class="page-inner center safe-content"><div class="eyebrow reveal r1">A completely unnecessary but important announcement</div><h2 class="announcement reveal r2">PGL IS<br><span>OFFICIALLY</span><br>GETTING OLDER.</h2><p class="small-copy reveal r3">Don't worry. The attitude is still under warranty.</p><div class="page-doraemon announce-doraemon"><img src="images/doraemon/doraemon7.png" alt=""></div></div>
+      <div class="dora-word dw-d">DORAEMON</div>
+      <div class="page-nav"><button class="nav-btn prev">← <span>PREVIOUS</span></button><button class="nav-btn next"><span>NEXT PAGE</span> →</button></div>
+    </section>
+
+    <!-- PAGE 13 -->
+    <section class="page photo-page" data-page="13">
+      <div class="photo-bg" style="--bg:url('images/photo8.jpeg')"></div><div class="photo-main"><img src="images/photo8.jpeg" alt="Sayera"></div><div class="photo-shade"></div>
+      <div class="photo-copy right reveal"><div class="chapter">CHAPTER 10 / ONE MORE FRAME</div><h2>For all the laughs, random talks and unforgettable moments...</h2></div>
+      <div class="page-doraemon photo-doraemon-8"><img src="images/doraemon/doraemon8.png" alt=""></div>
+      <div class="dora-word dw-e">DORAEMON</div>
+      <div class="page-nav"><button class="nav-btn prev">← <span>PREVIOUS</span></button><button class="nav-btn next"><span>NEXT PAGE</span> →</button></div>
+    </section>
+
+    <!-- PAGE 14 -->
+    <section class="page last-photo-page" data-page="14">
+      <div class="last-photo-bg"></div><div class="last-photo"><img src="images/photo9-horizontal.jpg" alt="Sayera and friend"></div>
+      <div class="last-photo-copy reveal"><div class="chapter">CHAPTER 11 / LAST FRAME</div><h2>9 photos were never going to be enough.</h2><p>There are still too many memories left to make.</p></div>
+      <div class="page-doraemon last-doraemon"><img src="images/doraemon/doraemon1.png" alt=""></div>
+      <div class="dora-word dw-f">DORAEMON</div>
+      <div class="page-nav"><button class="nav-btn prev">← <span>PREVIOUS</span></button><button class="nav-btn next"><span>ONE LAST PAGE</span> →</button></div>
+    </section>
+
+    <!-- PAGE 15 -->
+    <section class="page final-page" data-page="15">
+      <div class="final-glow"></div><div class="page-inner center final-inner safe-content"><div class="eyebrow reveal r1">One last thing, PGL...</div><div id="countdown" class="countdown reveal r2">3</div><p id="countText" class="small-copy reveal r3">Wait for it.</p>
+        <div id="finalMessage" class="final-message hidden"><div class="final-spark">✦</div><div class="user-message final-user-message"><p class="birthday-line">Janamdin mubarak yaar pgl</p><div class="final-line"></div><p>May Allah always protect you from evil eye's🧿.. May your day be Special as you aree🥰..</p><p>Meri Allah se yahi dua hai ke teri her khwaish puri ho😇.. tu jaha bi rahe hamesha khush rahe..🤲,</p></div></div></div>
+      <div id="confetti"></div><div class="page-doraemon final-doraemon"><img src="images/doraemon/doraemon4.png" alt=""></div>
+      <div class="dora-word dw-g">DORAEMON</div>
+      <div class="page-nav"><button class="nav-btn prev">← <span>PREVIOUS</span></button><button class="nav-btn next" disabled><span>END</span> ✓</button></div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
